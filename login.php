@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require_once 'config.php';
 
 // Database connection settings
@@ -18,53 +18,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $enteredPassword = $_POST['password'];
 
     // Prepare the SQL statement (use prepared statements to prevent SQL injection)
-    $sql = "SELECT * FROM login_db WHERE email = ?";
+    $sql = "SELECT * FROM registration WHERE Email = '".$enteredEmail."'";
+    //result
+    $res = mysqli_query($con,$sql);
+    //get the user
+    $user = mysqli_fetch_assoc($res);
+   
     
-    // Prepare and execute the statement
-    if ($stmt = $con->prepare($sql)) {
-        // Bind parameters
-        $stmt->bind_param("s", $enteredEmail);
+    
+    if(count($user)>0){
         
-        // Execute the statement
-        if ($stmt->execute()) {
-            // Get the result set
-            $result = $stmt->get_result();
+       
+        if (password_verify($enteredPassword, $user['password'])) {
+            session_start();
+            // Passwords match, login successful
+            $_SESSION['user_email'] = $user['Email'];
 
-            if ($result->num_rows > 0) {
-                // User found, verify password
-                $user = $result->fetch_assoc();
-                $storedPasswordHash = $user['password_hash'];
+            // Generate and store OTP
+            $otp = rand(100000, 999999);
+            $_SESSION['otp'] = $otp;
 
-                if (password_verify($enteredPassword, $storedPasswordHash)) {
-                    // Passwords match, login successful
-                    $_SESSION['user_email'] = $enteredEmail;
-
-                    // Generate and store OTP
-                    $otp = rand(100000, 999999);
-                    $_SESSION['otp'] = $otp;
-
-                    // Redirect to OTP verification page
-                    header("Location: otp.php");
-                    exit;
-                } else {
-                    // Passwords do not match, login failed
-                    $error_message = "Invalid credentials. Please try again.";
-                }
-            } else {
-                // User not found
-                $error_message = "User not found. Please check your email.";
-            }
-        } else {
-            // Error executing the statement
-            echo "Error executing the SQL statement: " . $stmt->error;
+            // Redirect to OTP verification page
+            header("Location: otp.php");
+            
+        }else{
+            echo 'Kindly check your password or email.';
         }
-
-        // Close the statement
-        $stmt->close();
-    } else {
-        // Error preparing the statement
-        echo "Error preparing the SQL statement: " . $conn->error;
-    }
+}
 }
 
 // Close the database connection

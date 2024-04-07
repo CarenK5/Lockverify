@@ -2,15 +2,15 @@
 session_start();
 
 // Check if the user is authenticated (you may need to implement a proper authentication check)
-if ($otp_verified) {
+/*if ($otp_verified) {
     // Redirect to dashboard.php
     header("Location: dashboard.php");
-    exit();
+    
 }else {
     // Redirect back to login page if OTP verification fails
     header("Location: login.php");
-    exit();
-}
+    
+}*/
 
 // Retrieve the saved OTP (replace with your OTP storage method)
 $storedOtp = isset($_SESSION['otp']) ? $_SESSION['otp'] : null;

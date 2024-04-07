@@ -27,6 +27,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `dashboard`
 --
 
+CREATE DATABASE 2fa_db;
+
+USE 2fa_db;
+
 CREATE TABLE `dashboard` (
   `ProfileSettings` varchar(50) NOT NULL,
   `ChangePassword` varchar(50) NOT NULL,
@@ -80,17 +84,8 @@ CREATE TABLE `registration` (
 
 INSERT INTO `registration` (`FirstName`, `LastName`, `PhoneNumber`, `Email`, `password`) VALUES
 ('c', 's', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 's', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 's', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 's', 708411412, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 708411412, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 708411412, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 708411412, 'carenkorir3@gmail.com', ''),
-('c', 's', 708411412, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 708411412, 'iamstupendous550@gmail.com', '');
+('c', 'h', 777455514, 'iamstupendous550@gmail.com', '');
+
 
 -- --------------------------------------------------------
 
