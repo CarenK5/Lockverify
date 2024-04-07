@@ -1,0 +1,17 @@
+{
+    "name": "cfkadmin/2fa",
+    "autoload": {
+        "psr-4": {
+            "Cfkadmin\\2fa\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "CarenK5",
+            "email": "carenkorir3@gmail.com"
+        }
+    ],
+        "require": {
+            "infobip/infobip-api-php-client": "*"
+        }
+    }
