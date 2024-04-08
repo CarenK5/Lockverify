@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "southACT41#8$", "2fa_db");
+$conn = mysqli_connect("localhost", "root", "", "2fa_db");
 
 session_start();
 require_once 'config.php';
