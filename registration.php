@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lastName = $_POST['last_name'];
         $email = $_POST['email'];
         $phoneNumber = $_POST['phone_number'];
+        $pass = $_POST['password'];
 
         // Validate the inputs (you may want to add more robust validation)
         if (empty($firstName) || empty($lastName) || empty($email) || empty($phoneNumber)) {
@@ -32,10 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $lastName = $conn->real_escape_string($lastName);
             $email = $conn->real_escape_string($email);
             $phoneNumber = $conn->real_escape_string($phoneNumber);
+            $pass = password_hash($conn->real_escape_string($pass),PASSWORD_BCRYPT);
 
             // Insert user data into the database
-            $sql = "INSERT INTO registration (FirstName, LastName, Email, PhoneNumber) 
-                    VALUES ('$firstName', '$lastName', '$email', '$phoneNumber')";
+            $sql = "INSERT INTO registration (FirstName, LastName, PhoneNumber, Email, password) 
+                    VALUES ('$firstName', '$lastName', '$phoneNumber','$email','$pass')";
 
             if ($conn->query($sql) === TRUE) {
                 // User data inserted successfully

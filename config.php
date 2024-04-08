@@ -1,8 +1,8 @@
 <?php
 // Database credentials
-$dbHost = 'localhost';
-$dbUsername = 'root';
+$dbHost = '';
+$dbUsername = '';
 $dbPassword = '';
-$dbName = '2fa_db';
+$dbName = '';
 
 ?>
