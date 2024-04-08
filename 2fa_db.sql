@@ -75,16 +75,14 @@ CREATE TABLE `registration` (
   `LastName` varchar(50) NOT NULL,
   `PhoneNumber` int(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`FirstName`, `LastName`, `PhoneNumber`, `Email`, `password`) VALUES
-('c', 's', 777455514, 'iamstupendous550@gmail.com', ''),
-('c', 'h', 777455514, 'iamstupendous550@gmail.com', '');
+
 
 
 -- --------------------------------------------------------
